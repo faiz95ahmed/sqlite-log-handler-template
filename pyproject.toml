@@ -1,0 +1,22 @@
+[project]
+name = "sqlite-log-handler-template"
+version = "0.1.0"
+description = "Reference implementation of a non-blocking SQLite logging handler — adapt into your Python CLI project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.0",
+    "ruff>=0.4",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+strict = true
