@@ -8,9 +8,11 @@ This is a **reference repo** — not a package. Read the files, adapt them into 
 
 ## What this is and why
 
-Python's built-in `logging` module is synchronous. Disk writes on every log call add latency to CLI tools. This pattern moves all SQLite writes to a background daemon thread so `emit()` never blocks the caller.
+Flat log files are hard for agents and scripts to query. Storing logs in SQLite gives you structured, indexed data that can be filtered by run, command, level, logger, or time range with plain SQL — no parsing required.
 
-Storing logs in SQLite rather than flat files gives you structured querying, per-run grouping, and a drop-in Typer command to browse them.
+Every log row is tagged with a `run_id` and `command`, so agents can easily inspect a specific run or compare across runs. A drop-in Typer command is included for interactive browsing too.
+
+Writes happen on a background daemon thread so `emit()` never blocks the caller.
 
 ---
 
